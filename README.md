@@ -62,8 +62,9 @@ En caso de necesitar verificar la version instalada de php, composer o Laravel, 
 
 En primer lugar se clona el repositorio con los siguientes comandos en consola:
 ```
-  cd ubicacionProyecto
-  git clone <https://github.com/Vergil12131/CatalogoProductos.git >
+  cd ubicacionAClonarProyecto
+  git clone https://github.com/Vergil12131/CatalogoProductos.git
+  cd CatalogoProductos
 ```
 
 Se procede a instalar las dependencias utilizando:
@@ -73,16 +74,18 @@ Se procede a instalar las dependencias utilizando:
 
 Copiamos el archivo example.env:
 ```
-  cp .env.example .env
+  copy .env.example .env
 ```
 
 Dentro del nuevo archivo (".env"), configuramos la información de la base de datos:
+```
   DB_CONNECTION=mysql
   DB_HOST=127.0.0.1
   DB_PORT=3306
   DB_DATABASE=nombre_bd
   DB_USERNAME=usuario
   DB_PASSWORD=contraseña
+  ```
 
 Generamos clave de aplicacion:
 ```
