@@ -12,7 +12,12 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = Producto::activos()->get();
+        // Usar el scope para obtener solo productos activos
+        // $productos = Producto::activos()->get();
+
+        // Traer todos los productos, exluyendo los eliminados con soft deletes
+        $productos = Producto::all();
+
         return view('productos.index', compact('productos'));
     }
 
@@ -99,7 +104,10 @@ class ProductoController extends Controller
             // $producto->delete();
 
             // Eliminado lógico usando el campo estado
-            $producto->update(['estado' => 'inactivo']);
+            //$producto->update(['estado' => 'inactivo']);
+
+            // Eliminado lógico usando soft deletes
+            $producto->delete();
 
             return redirect()->route('productos.index')
                             ->with('success', 'Producto eliminado correctamente');

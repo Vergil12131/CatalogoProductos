@@ -3,9 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Producto extends Model
 {
+    // Agregar el trait de SoftDeletes
+    use SoftDeletes;
+
     // Agregar un scope para filtrar por productos activos
     public function scopeActivos($query)
     {

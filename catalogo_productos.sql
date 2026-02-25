@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 25, 2026 at 02:49 AM
+-- Generation Time: Feb 25, 2026 at 09:47 PM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -132,7 +132,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '0001_01_01_000000_create_users_table', 1),
 (2, '0001_01_01_000001_create_cache_table', 1),
 (3, '0001_01_01_000002_create_jobs_table', 1),
-(4, '2026_02_25_024335_create_productos_table', 2);
+(4, '2026_02_25_024335_create_productos_table', 2),
+(5, '2026_02_25_213759_add_deleted_at_to_productos_table', 3),
+(6, '2026_02_25_213917_add_deleted_at_to_productos_table', 4);
 
 -- --------------------------------------------------------
 
@@ -164,8 +166,17 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `estado` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'activo',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `productos`
+--
+
+INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `stock`, `estado`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Manzana', 'Deliciosa manzana', 0.99, 0, 'activo', '2026-02-26 01:53:17', '2026-02-26 02:24:29', NULL),
+(2, 'Pera', 'Rica pera', 0.99, 99, 'inactivo', '2026-02-26 02:12:21', '2026-02-26 02:46:30', '2026-02-26 02:46:30');
 
 -- --------------------------------------------------------
 
@@ -185,6 +196,14 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   KEY `sessions_user_id_index` (`user_id`),
   KEY `sessions_last_activity_index` (`last_activity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('xe6rGWePsRmh6z5WXbGbLnxAvRlP1LdsaRNqLbxF', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiWlFzMkh6STUwZFhSVnJTeG5veWZFS0xEOHZoRlNUbVkyeDgySzZGMiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wcm9kdWN0b3MiO3M6NToicm91dGUiO3M6MTU6InByb2R1Y3Rvcy5pbmRleCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1772055990),
+('Zxkmn6zIIjpRaw4fXEh6ZOKbeFk6FpvOivfCxpHC', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiQzF6MHk4MVh3TzZkR3ZQS2g2WEc1NGN5akY4TEdNYjg2V1FiVVZtUyI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wcm9kdWN0b3MiO3M6NToicm91dGUiO3M6MTU6InByb2R1Y3Rvcy5pbmRleCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1771990684);
 
 -- --------------------------------------------------------
 
