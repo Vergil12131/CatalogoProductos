@@ -53,7 +53,7 @@
                                             Ver
                                         </a>
 
-                                        <a href="#" class="btn btn-sm btn-warning">
+                                        <a href="{{ route('productos.edit', $producto->id) }}" class="btn btn-sm btn-warning">
                                             Editar
                                         </a>
 
