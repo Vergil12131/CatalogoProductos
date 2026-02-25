@@ -57,9 +57,19 @@
                                             Editar
                                         </a>
 
-                                        <button class="btn btn-sm btn-danger">
-                                            Eliminar
-                                        </button>
+                                        <form action="{{ route('productos.destroy', $producto->id) }}" 
+                                            method="POST" 
+                                            style="display:inline;">
+
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button type="submit" 
+                                                    class="btn btn-sm btn-danger"
+                                                    onclick="return confirm('¿Seguro que deseas eliminar este producto?')">
+                                                Eliminar
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @empty

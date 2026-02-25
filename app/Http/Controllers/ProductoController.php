@@ -94,6 +94,19 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
-        //
+        try {
+            // Eliminado físico
+            // $producto->delete();
+
+            // Eliminado lógico usando el campo estado
+            $producto->update(['estado' => 'inactivo']);
+
+            return redirect()->route('productos.index')
+                            ->with('success', 'Producto eliminado correctamente');
+        } catch (\Exception $e) {
+
+            return redirect()->route('productos.index')
+                            ->with('error', 'No se pudo eliminar el producto');
+        }
     }
 }
