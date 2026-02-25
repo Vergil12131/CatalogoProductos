@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 25, 2026 at 02:32 AM
+-- Generation Time: Feb 25, 2026 at 02:49 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -131,7 +131,8 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '0001_01_01_000000_create_users_table', 1),
 (2, '0001_01_01_000001_create_cache_table', 1),
-(3, '0001_01_01_000002_create_jobs_table', 1);
+(3, '0001_01_01_000002_create_jobs_table', 1),
+(4, '2026_02_25_024335_create_productos_table', 2);
 
 -- --------------------------------------------------------
 
@@ -145,6 +146,25 @@ CREATE TABLE IF NOT EXISTS `password_reset_tokens` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `productos`
+--
+
+DROP TABLE IF EXISTS `productos`;
+CREATE TABLE IF NOT EXISTS `productos` (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `precio` double NOT NULL,
+  `stock` int NOT NULL,
+  `estado` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'activo',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -165,23 +185,6 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   KEY `sessions_user_id_index` (`user_id`),
   KEY `sessions_last_activity_index` (`last_activity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_producto`
---
-
-DROP TABLE IF EXISTS `tbl_producto`;
-CREATE TABLE IF NOT EXISTS `tbl_producto` (
-  `pro_id` int NOT NULL AUTO_INCREMENT,
-  `pro_nombre` varchar(50) NOT NULL,
-  `pro_descripcion` varchar(300) DEFAULT NULL,
-  `pro_precio` double NOT NULL,
-  `pro_stock` int NOT NULL,
-  `pro_estado` varchar(10) NOT NULL DEFAULT 'activo',
-  PRIMARY KEY (`pro_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
