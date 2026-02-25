@@ -9,7 +9,7 @@
 
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="mb-0">Lista de Productos</h2>
-                <a href="#" class="btn btn-primary">
+                <a href="{{ route('productos.create') }}" class="btn btn-primary">
                     + Nuevo Producto
                 </a>
             </div>
@@ -29,6 +29,9 @@
                         <tbody>
                             @forelse($productos as $producto)
                                 <tr>
+                                    <td>{{ $producto->nombre }}</td>
+                                    <td>${{ number_format($producto->precio, 2) }}</td>
+                                    <td>{{ $producto->stock }}</td>
                                     <td class="text-end">
                                         <a href="#" 
                                         class="btn btn-sm btn-info text-white">

@@ -24,4 +24,12 @@ class Producto extends Model
     {
         return $query->where('stock', '>', 0);
     }
+
+    protected $fillable = [
+    'nombre',
+    'descripcion',
+    'precio',
+    'stock',
+    'estado'
+    ];
 }

@@ -21,7 +21,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+         return view('productos.create');
     }
 
     /**
@@ -29,7 +29,24 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|max:255',
+            'precio' => 'required|numeric',
+            'stock' => 'required|integer'
+        ]);
+
+        # Producto::create($request->all());
+
+         Producto::create([
+        'nombre' => $request->nombre,
+        'descripcion' => $request->descripcion,
+        'precio' => $request->precio,
+        'stock' => $request->stock,
+        'estado' => 'activo'
+        ]);
+
+        return redirect()->route('productos.index')
+                        ->with('success', 'Producto creado correctamente');
     }
 
     /**
