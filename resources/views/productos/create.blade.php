@@ -17,22 +17,34 @@
 
                         <div class="mb-3">
                             <label class="form-label">Nombre</label>
-                            <input type="text" name="nombre" class="form-control">
+                            <input type="text" name="nombre" class="form-control" value="{{ old('nombre') }}">
+                            @error('nombre')
+                                <div class="text-danger small">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Descripción</label>
-                            <textarea name="descripcion" class="form-control"></textarea>
+                            <textarea name="descripcion" class="form-control">{{ old('descripcion') }}</textarea>
+                            @error('descripcion')
+                                <div class="text-danger small">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Precio</label>
-                            <input type="number" step="0.01" name="precio" class="form-control">
+                            <input type="number" step="0.01" name="precio" class="form-control" value="{{ old('precio') }}">
+                            @error('precio')
+                                <div class="text-danger small">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Stock</label>
-                            <input type="number" name="stock" class="form-control">
+                            <input type="number" name="stock" class="form-control" value="{{ old('stock') }}">
+                            @error('stock')
+                                <div class="text-danger small">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <button type="submit" class="btn btn-success">
