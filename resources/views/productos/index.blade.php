@@ -48,7 +48,7 @@
                                     <td>${{ number_format($producto->precio, 2) }}</td>
                                     <td>{{ $producto->stock }}</td>
                                     <td class="text-end">
-                                        <a href="#" 
+                                        <a href="{{ route('productos.show', $producto->id) }}"
                                         class="btn btn-sm btn-info text-white">
                                             Ver
                                         </a>
